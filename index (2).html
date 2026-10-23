@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para o Amor da Minha Vida - Lívia 💕</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Dancing Script, Caveat, Poppins & Pacifico -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            roseGold: '#B76E79',
+            softPink: '#FFF0F3',
+            deepRose: '#FF4D6D',
+            blushPink: '#FFB3C1',
+            accentGold: '#FFD700',
+            softPurple: '#E2D4F0',
+            creamyWhite: '#FFF9FA'
+          },
+          fontFamily: {
+            title: ['"Pacifico"', 'cursive'],
+            cursive: ['"Dancing Script"', 'cursive'],
+            handwriting: ['"Caveat"', 'cursive'],
+            sans: ['"Poppins"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Dynamic Animated Gradient Background */
+    body {
+      background: linear-gradient(-45deg, #fff0f3, #ffe5ec, #e2d4f0, #fff9fa);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Hearts Overlay Canvas */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glassmorphism Card Effect */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 179, 193, 0.5);
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.12);
+    }
+
+    .glass-card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 38px rgba(255, 77, 109, 0.22);
+      border-color: rgba(255, 77, 109, 0.6);
+    }
+
+    /* Polaroid Photo Card Styling */
+    .polaroid-frame {
+      background: #ffffff;
+      padding: 16px 16px 24px 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+      transform: rotate(-2deg);
+      transition: all 0.4s ease;
+    }
+    .polaroid-frame:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 0 20px 35px rgba(255, 77, 109, 0.25);
+    }
+
+    /* Tape Effect on Top of Polaroid */
+    .washi-tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(2deg);
+      width: 110px;
+      height: 28px;
+      background: rgba(255, 179, 193, 0.7);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      z-index: 20;
+      backdrop-filter: blur(2px);
+    }
+
+    /* Photo Reveal Overlay */
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 240, 243, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 10;
+    }
+
+    .photo-overlay.revealed {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.05);
+    }
+
+    /* Glowing Pulse Animation */
+    .glow-pulse {
+      animation: pulseGlow 2.5s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 15px rgba(255, 77, 109, 0.3);
+      }
+      100% {
+        box-shadow: 0 0 32px rgba(255, 77, 109, 0.7), 0 0 15px rgba(255, 215, 0, 0.4);
+      }
+    }
+
+    /* Flip Card Styles */
+    .flip-card {
+      background-color: transparent;
+      perspective: 1000px;
+      height: 190px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Music Equalizer Visualizer */
+    .bar {
+      width: 4px;
+      height: 22px;
+      background-color: #FF4D6D;
+      border-radius: 3px;
+      animation: soundWave 1.2s ease-in-out infinite alternate;
+    }
+
+    .bar:nth-child(1) { animation-delay: 0.1s; }
+    .bar:nth-child(2) { animation-delay: 0.3s; }
+    .bar:nth-child(3) { animation-delay: 0.5s; }
+    .bar:nth-child(4) { animation-delay: 0.2s; }
+    .bar:nth-child(5) { animation-delay: 0.4s; }
+
+    .paused .bar {
+      animation-play-state: paused;
+      height: 6px !important;
+    }
+
+    @keyframes soundWave {
+      0% { height: 6px; }
+      100% { height: 28px; }
+    }
+
+    /* Envelope Opening Animation */
+    .envelope {
+      width: 220px;
+      height: 140px;
+      background: #FFB3C1;
+      position: relative;
+      margin: 0 auto;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-left: 110px solid transparent;
+      border-right: 110px solid transparent;
+      border-top: 80px solid #FF4D6D;
+      transform-origin: top;
+      transition: transform 0.5s ease;
+      z-index: 3;
+    }
+
+    .envelope-pocket {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 110px solid #FF8FA3;
+      border-right: 110px solid #FF8FA3;
+      border-bottom: 80px solid #FF758F;
+      border-radius: 0 0 12px 12px;
+      z-index: 2;
+    }
+
+    .envelope-seal {
+      position: absolute;
+      top: 65px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 38px;
+      height: 38px;
+      background: #FFD700;
+      color: #D4002d;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 4;
+    }
+
+    /* Volume Slider Customization */
+    input[type=range] {
+      accent-color: #FF4D6D;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FFF0F3;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #FFB3C1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #FF4D6D;
+    }
+  </style>
+</head>
+<body class="text-gray-800 relative min-h-screen pb-16">
+
+  <!-- Background Canvas for Floating Hearts & Stars -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- MAIN CONTAINER -->
+  <div class="max-w-4xl mx-auto px-4 pt-8 md:pt-12 relative z-10 space-y-12">
+
+    <!-- 1. HEADER SECTION -->
+    <header class="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden glow-pulse">
+      <div class="absolute -top-12 -left-12 w-36 h-36 bg-pink-200 rounded-full blur-2xl opacity-60"></div>
+      <div class="absolute -bottom-12 -right-12 w-36 h-36 bg-purple-200 rounded-full blur-2xl opacity-60"></div>
+      
+      <!-- Crown / Heart Icon -->
+      <div class="inline-block p-4 bg-red-100 rounded-full text-deepRose mb-4 animate-bounce">
+        <i class="fa-solid fa-heart text-4xl"></i>
+      </div>
+
+      <h1 class="font-title text-3xl md:text-5xl text-deepRose mb-4 tracking-wide drop-shadow-sm">
+        Para a Minha Lívia 💕
+      </h1>
+      
+      <p class="font-cursive text-2xl md:text-4xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+        "Lívia, você é a minha pessoa favorita em todo o universo!"
+      </p>
+
+      <div class="mt-6 inline-flex items-center space-x-2 bg-pink-100/80 px-4 py-2 rounded-full border border-pink-200">
+        <span class="text-xs font-semibold text-deepRose uppercase tracking-wider">
+          ✨ Feito com todo o meu amor para você, Lívia ✨
+        </span>
+      </div>
+    </header>
+
+    <!-- 2. SEÇÃO DA FOTO DO CASAL / POLAROID -->
+    <section class="glass-card rounded-3xl p-6 md:p-10 space-y-6 text-center">
+      <div class="space-y-2">
+        <h2 class="font-title text-2xl md:text-3xl text-deepRose">
+          Um Momento Especial 📸
+        </h2>
+        <p class="text-xs md:text-sm text-gray-600">Toque na imagem abaixo para revelar a surpresa!</p>
+      </div>
+
+      <!-- POLAROID CONTAINER WITH REVEAL OVERLAY -->
+      <div class="relative inline-block my-4 max-w-sm w-full">
+        <div class="washi-tape"></div>
+        
+        <div class="polaroid-frame rounded-xl relative group cursor-pointer" onclick="revealPhoto()">
+          
+          <!-- REVEAL COVER OVERLAY -->
+          <div id="photo-cover" class="photo-overlay border-2 border-dashed border-pink-300">
+            <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center text-deepRose mb-3 animate-bounce shadow-md">
+              <i class="fa-solid fa-heart text-2xl"></i>
+            </div>
+            <p class="font-title text-xl md:text-2xl text-deepRose leading-snug px-2">
+              A mulher mais linda do mundo 💕
+            </p>
+            <span class="mt-3 text-xs font-semibold text-white bg-gradient-to-r from-deepRose to-pink-500 px-4 py-2 rounded-full shadow-md">
+              ✨ Toque para ver ✨
+            </span>
+          </div>
+
+          <!-- ========================================================================= -->
+          <!-- 💡 DICA PARA O USUÁRIO:                                                   -->
+          <!-- Substitua a URL dentro do 'src' abaixo pelo link direto da foto da Lívia!  -->
+          <!-- Exemplo: src="foto-livia.jpg" ou src="https://link-da-foto.com/livia.jpg" -->
+          <!-- ========================================================================= -->
+            <img 
+              id="girlPhoto" 
+              src="Livia.jpg"
+              alt="Foto da Lívia">
+          >
+
+          <!-- Polaroid Caption -->
+          <div class="pt-4 pb-1">
+            <p class="font-handwriting text-2xl md:text-3xl text-gray-800 font-bold" id="photo-caption">
+              Lívia & Eu Pra Sempre ❤️
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MINI TOCADOR DE MÚSICA (ROCK CLÁSSICO ROMÂNTICO) -->
+    <section class="glass-card rounded-3xl p-6 md:p-8 space-y-6">
+      <!-- Player Header -->
+      <div class="flex items-center justify-between border-b border-pink-200/80 pb-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-12 h-12 rounded-full bg-gradient-to-r from-deepRose to-pink-500 text-white flex items-center justify-center shadow-md">
+            <i class="fa-solid fa-guitar text-xl"></i>
+          </div>
+          <div>
+            <h2 class="font-bold text-gray-800 text-lg md:text-xl">Rock Clássico Romântico 🎸</h2>
+            <p class="text-xs text-gray-500">A nossa trilha sonora com os maiores clássicos</p>
+          </div>
+        </div>
+
+        <!-- Equalizer Visualizer -->
+        <div id="visualizer" class="flex items-end space-x-1 h-8 paused">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+
+      <!-- Current Track Display -->
+      <div class="flex flex-col md:flex-row items-center justify-between bg-white/80 rounded-2xl p-5 gap-6 border border-pink-100 shadow-sm">
+        <div class="flex items-center space-x-4 w-full md:w-auto">
+          <!-- Vinyl Disc Icon -->
+          <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-rose-500 via-pink-400 to-purple-300 flex items-center justify-center text-white shadow-lg flex-shrink-0 relative overflow-hidden">
+            <i class="fa-solid fa-compact-disc text-4xl animate-spin" style="animation-duration: 6s;" id="vinyl-icon"></i>
+            <div class="absolute w-4 h-4 bg-white rounded-full border-2 border-gray-300"></div>
+          </div>
+          
+          <div class="space-y-1">
+            <span id="song-tag" class="text-[11px] font-bold text-deepRose bg-pink-100 px-2.5 py-0.5 rounded-full inline-block">
+              Rock Ballad #1
+            </span>
+            <h3 class="font-bold text-gray-800 text-lg leading-tight" id="song-title">Always</h3>
+            <p class="text-sm font-medium text-gray-500" id="song-artist">Bon Jovi</p>
+          </div>
+        </div>
+
+        <!-- Player Controls & Audio Bar -->
+        <div class="w-full md:w-1/2 space-y-4">
+          <!-- Audio Progress Bar -->
+          <div class="space-y-1">
+            <div class="w-full bg-pink-100 rounded-full h-2 cursor-pointer overflow-hidden" id="progress-container" onclick="setProgress(event)">
+              <div class="bg-gradient-to-r from-deepRose to-pink-500 h-2 rounded-full w-0 transition-all duration-100" id="progress-bar"></div>
+            </div>
+            <div class="flex justify-between text-[11px] text-gray-400 font-medium">
+              <span id="current-time">0:00</span>
+              <span id="duration-time">0:00</span>
+            </div>
+          </div>
+
+          <!-- Main Player Controls & Volume -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <!-- Buttons -->
+            <div class="flex items-center space-x-5 mx-auto sm:mx-0">
+              <button onclick="prevSong()" class="w-10 h-10 rounded-full bg-pink-100 text-deepRose hover:bg-pink-200 transition flex items-center justify-center text-base active:scale-95 shadow-sm">
+                <i class="fa-solid fa-backward-step"></i>
+              </button>
+              
+              <button id="play-btn" onclick="togglePlay()" class="w-13 h-13 w-12 h-12 rounded-full bg-gradient-to-tr from-deepRose to-pink-500 text-white hover:opacity-95 transition flex items-center justify-center shadow-lg text-xl active:scale-95">
+                <i class="fa-solid fa-play ml-1" id="play-icon"></i>
+              </button>
+              
+              <button onclick="nextSong()" class="w-10 h-10 rounded-full bg-pink-100 text-deepRose hover:bg-pink-200 transition flex items-center justify-center text-base active:scale-95 shadow-sm">
+                <i class="fa-solid fa-forward-step"></i>
+              </button>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="flex items-center space-x-2 text-gray-500 text-xs">
+              <button onclick="toggleMute()" class="focus:outline-none hover:text-deepRose">
+                <i class="fa-solid fa-volume-high text-sm" id="volume-icon"></i>
+              </button>
+              <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)" class="w-20 h-1 rounded-lg cursor-pointer">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Playlist Selection Grid -->
+      <div class="space-y-2">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Músicas da Playlist:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="playlist-container">
+          <!-- Playlist items rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Audio Element -->
+      <audio id="audio-player" ontimeupdate="updateProgress()" onended="nextSong()"></audio>
+    </section>
+
+    <!-- 4. "MOTIVOS PARA TE AMAR" (FLIP CARDS INTERATIVOS) -->
+    <section class="space-y-6">
+      <div class="text-center">
+        <h2 class="font-title text-2xl md:text-3xl text-deepRose">
+          Motivos Para Amar Você, Lívia 💖
+        </h2>
+        <p class="text-xs md:text-sm text-gray-600">Toque em cada cartão para ver um segredo do meu coração!</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <!-- Card 1 -->
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-card glass-card-hover border-pink-200">
+              <i class="fa-solid fa-face-smile-beam text-4xl text-deepRose mb-2"></i>
+              <h3 class="font-bold text-gray-800">Seu Sorriso</h3>
+              <span class="text-[11px] text-pink-500 font-medium mt-2 bg-pink-100 px-3 py-1 rounded-full">Clique para virar ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-xl">
+              <p class="text-sm font-medium leading-relaxed">Lívia, seu sorriso ilumina até os meus piores dias e faz meu coração disparar toda vez!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-card glass-card-hover border-pink-200">
+              <i class="fa-solid fa-hand-holding-heart text-4xl text-deepRose mb-2"></i>
+              <h3 class="font-bold text-gray-800">Seu Carinho</h3>
+              <span class="text-[11px] text-pink-500 font-medium mt-2 bg-pink-100 px-3 py-1 rounded-full">Clique para virar ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-xl">
+              <p class="text-sm font-medium leading-relaxed">A forma doce e atenciosa como você cuida de mim me faz me sentir o cara mais sortudo do mundo.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-card glass-card-hover border-pink-200">
+              <i class="fa-solid fa-laugh-squint text-4xl text-deepRose mb-2"></i>
+              <h3 class="font-bold text-gray-800">Sua Risada</h3>
+              <span class="text-[11px] text-pink-500 font-medium mt-2 bg-pink-100 px-3 py-1 rounded-full">Clique para virar ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-xl">
+              <p class="text-sm font-medium leading-relaxed">O som da sua gargalhada é sem dúvidas a minha melodia favorita no universo inteiro!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-card glass-card-hover border-pink-200">
+              <i class="fa-solid fa-mug-hot text-4xl text-deepRose mb-2"></i>
+              <h3 class="font-bold text-gray-800">Nossa Cumplicidade</h3>
+              <span class="text-[11px] text-pink-500 font-medium mt-2 bg-pink-100 px-3 py-1 rounded-full">Clique para virar ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-xl">
+              <p class="text-sm font-medium leading-relaxed">Com você, Lívia, até o momento mais simples se torna extraordinário e inesquecível.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-card glass-card-hover border-pink-200">
+              <i class="fa-solid fa-star text-4xl text-deepRose mb-2"></i>
+              <h3 class="font-bold text-gray-800">Seu Jeito Único</h3>
+              <span class="text-[11px] text-pink-500 font-medium mt-2 bg-pink-100 px-3 py-1 rounded-full">Clique para virar ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-xl">
+              <p class="text-sm font-medium leading-relaxed">Sua inteligência, bondade e esse seu brilho próprio me encantam diariamente.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <div class="flip-card-front glass-card glass-card-hover border-pink-200">
+              <i class="fa-solid fa-infinity text-4xl text-deepRose mb-2"></i>
+              <h3 class="font-bold text-gray-800">Apenas Você</h3>
+              <span class="text-[11px] text-pink-500 font-medium mt-2 bg-pink-100 px-3 py-1 rounded-full">Clique para virar ➔</span>
+            </div>
+            <div class="flip-card-back bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-xl">
+              <p class="text-sm font-medium leading-relaxed">Eu te amo exatamente assim: a minha Lívia, perfeita em cada pequeno detalhe!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ENVELOPE INTERATIVO COM CARTA DE AMOR -->
+    <section class="text-center py-4">
+      <div class="glass-card rounded-3xl p-8 space-y-6">
+        <div class="space-y-2">
+          <h2 class="font-title text-2xl md:text-3xl text-deepRose">Carta Para a Lívia ✉️</h2>
+          <p class="text-xs md:text-sm text-gray-600">Toque no envelope para abrir minha declaração!</p>
+        </div>
+
+        <!-- Interactive Envelope Animation -->
+        <div class="py-4">
+          <div class="envelope" onclick="openLetter()">
+            <div class="envelope-flap" id="envelope-flap"></div>
+            <div class="envelope-pocket"></div>
+            <div class="envelope-seal">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="openLetter()" class="px-6 py-3 bg-gradient-to-r from-deepRose to-pink-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition duration-300">
+          <i class="fa-solid fa-envelope-open-text mr-2"></i> Abrir Carta da Lívia
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. PERGUNTA ROMÂNTICA INTERATIVA (BOTÃO "NÃO" FUJÃO) -->
+    <section class="glass-card rounded-3xl p-6 md:p-10 space-y-6 text-center">
+      <div class="space-y-2">
+        <div class="inline-block p-3 bg-pink-100 rounded-full text-deepRose mb-1">
+          <i class="fa-solid fa-circle-question text-3xl"></i>
+        </div>
+        <h2 class="font-title text-2xl md:text-3xl text-deepRose">
+          Uma Pergunta para a Lívia... 🙈
+        </h2>
+        <p class="text-sm text-gray-600">Responda com toda a sua sinceridade!</p>
+      </div>
+
+      <div class="bg-white/80 rounded-2xl p-6 md:p-8 space-y-6 border border-pink-200 shadow-inner">
+        <h3 class="text-lg md:text-2xl font-bold text-gray-800 leading-snug">
+          Lívia, você aceita continuar sendo a razão do meu sorriso e o grande amor da minha vida para sempre? 🌹
+        </h3>
+
+        <!-- Buttons Area -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 min-h-[120px] relative" id="button-wrapper">
+          <button onclick="acceptLove()" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-bold rounded-full shadow-lg hover:scale-110 transition duration-200 text-lg flex items-center space-x-2 z-10">
+            <i class="fa-solid fa-check"></i>
+            <span>SIM! Com certeza! 🥰</span>
+          </button>
+
+          <button id="no-btn" onmouseover="dodgeNoButton()" onclick="dodgeNoButton()" class="px-8 py-4 bg-gray-400 text-white font-bold rounded-full shadow transition-all duration-200 text-lg z-0">
+            Não 😜
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. SURPRISE CONFETTI EXPLOSION BUTTON -->
+    <section class="text-center pt-2">
+      <button onclick="triggerExplosion()" class="px-8 py-4 bg-gradient-to-r from-yellow-400 via-pink-500 to-deepRose text-white font-bold rounded-full shadow-2xl hover:scale-110 transition duration-300 text-lg animate-bounce flex items-center justify-center mx-auto space-x-2">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Clique Aqui Para Uma Surpresa! ✨</span>
+      </button>
+    </section>
+
+  </div> <!-- END MAIN CONTAINER -->
+
+  <!-- LOVE LETTER MODAL -->
+  <div id="letter-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden p-4">
+    <div class="glass-card max-w-lg w-full rounded-3xl p-6 md:p-8 relative space-y-5 max-h-[90vh] overflow-y-auto border-2 border-pink-300 shadow-2xl">
+      
+      <button onclick="closeLetter()" class="absolute top-4 right-4 text-gray-400 hover:text-deepRose text-2xl transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center border-b border-pink-200 pb-3">
+        <span class="font-title text-3xl text-deepRose">Minha Doce Lívia,</span>
+      </div>
+
+      <div class="font-handwriting text-2xl md:text-3xl text-gray-800 leading-relaxed space-y-4">
+        <p>
+          Se eu tivesse que escolher entre todas as maravilhas do mundo e você, escolheria você sem hesitar um único segundo.
+        </p>
+        <p>
+          Lívia, obrigado por preencher meus dias de paz, por cada risada compartilhada e por ser esse meu porto seguro tão doce e único.
+        </p>
+        <p>
+          Como nos maiores clássicos do Rock: <i>"I'll be there 'til the stars don't shine..."</i> Eu estarei ao seu lado para sempre, te amando, te cuidando e te admirando.
+        </p>
+        <p class="text-right font-bold text-deepRose pt-2 font-cursive text-3xl">
+          Com todo o meu amor, para você Lívia ❤️
+        </p>
+      </div>
+
+      <div class="text-center pt-2">
+        <button onclick="closeLetter()" class="px-8 py-3 bg-gradient-to-r from-deepRose to-pink-500 text-white font-semibold rounded-full shadow-md hover:opacity-95 transition">
+          Guardar com Carinho 💋
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    /* -------------------------------------------------------------
+       1. CANVAS BACKGROUND: FLOATING HEARTS & STARS
+    ------------------------------------------------------------- */
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const particleCount = 35;
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 100;
+        this.size = Math.random() * 16 + 10;
+        this.speed = Math.random() * 1.2 + 0.5;
+        this.opacity = Math.random() * 0.5 + 0.3;
+        this.type = Math.random() > 0.3 ? 'heart' : 'star';
+        this.swing = Math.random() * 0.02;
+        this.swingCounter = Math.random() * Math.PI;
+      }
+
+      update() {
+        this.y -= this.speed;
+        this.swingCounter += this.swing;
+        this.x += Math.sin(this.swingCounter) * 0.6;
+
+        if (this.y < -30) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = '#FF4D6D';
+        ctx.font = `${this.size}px sans-serif`;
+        ctx.fillText(this.type === 'heart' ? '💖' : '✨', this.x, this.y);
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    /* -------------------------------------------------------------
+       2. REVEAL PHOTO LOGIC ON CLICK
+    ------------------------------------------------------------- */
+    function revealPhoto() {
+      const cover = document.getElementById('photo-cover');
+      if (cover && !cover.classList.contains('revealed')) {
+        cover.classList.add('revealed');
+        confetti({
+          particleCount: 50,
+          spread: 60,
+          origin: { y: 0.4 }
+        });
+      }
+    }
+
+    /* -------------------------------------------------------------
+       3. MUSIC PLAYER - CLASSIC ROMANTIC ROCK PLAYLIST
+    ------------------------------------------------------------- */
+    const playlist = [
+      {
+        title: "Always",
+        artist: "Bon Jovi",
+        tag: "Classic Rock #1 🎸",
+        src: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3"
+      },
+      {
+        title: "I Don't Want to Miss a Thing",
+        artist: "Aerosmith",
+        tag: "Inesquecível 💕",
+        src: "https://cdn.pixabay.com/download/audio/2023/02/28/audio_50e39cfc1a.mp3?filename=tender-love-141321.mp3"
+      },
+      {
+        title: "Love of My Life",
+        artist: "Queen",
+        tag: "Para Sempre 👑",
+        src: "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=sweet-love-10878.mp3"
+      },
+      {
+        title: "November Rain",
+        artist: "Guns N' Roses",
+        tag: "Épico 🌹",
+        src: "https://cdn.pixabay.com/download/audio/2022/10/25/audio_24a2e5728a.mp3?filename=romantic-love-126325.mp3"
+      },
+      {
+        title: "Still Loving You",
+        artist: "Scorpions",
+        tag: "Eterno Rock ❤️",
+        src: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73132.mp3?filename=love-ambient-110241.mp3"
+      },
+      {
+        title: "(Everything I Do) I Do It for You",
+        artist: "Bryan Adams",
+        tag: "Declaração ✨",
+        src: "https://cdn.pixabay.com/download/audio/2022/11/06/audio_c3e62f0331.mp3?filename=romantic-acoustic-guitar-127303.mp3"
+      },
+      {
+        title: "Best of My Love",
+        artist: "Eagles",
+        tag: "Suave & Doce 🦅",
+        src: "https://cdn.pixabay.com/download/audio/2022/05/16/audio_db6522c069.mp3?filename=acoustic-guitars-111100.mp3"
+      }
+    ];
+
+    let currentSongIndex = 0;
+    let isPlaying = false;
+
+    const audio = document.getElementById('audio-player');
+    const playBtn = document.getElementById('play-btn');
+    const playIcon = document.getElementById('play-icon');
+    const visualizer = document.getElementById('visualizer');
+    const progressBar = document.getElementById('progress-bar');
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumeIcon = document.getElementById('volume-icon');
+
+    function initPlaylist() {
+      const container = document.getElementById('playlist-container');
+      container.innerHTML = '';
+
+      playlist.forEach((song, index) => {
+        const item = document.createElement('div');
+        item.className = `p-3 rounded-xl border flex items-center justify-between cursor-pointer transition ${index === currentSongIndex ? 'bg-pink-100/90 border-pink-300 font-bold' : 'bg-white/60 border-pink-100 hover:bg-pink-50'}`;
+        item.onclick = () => selectSong(index);
+        
+        item.innerHTML = `
+          <div class="flex items-center space-x-3 truncate">
+            <span class="text-xs ${index === currentSongIndex ? 'text-deepRose font-bold' : 'text-gray-400'}">#${index + 1}</span>
+            <div class="truncate">
+              <p class="text-xs text-gray-800 truncate">${song.title}</p>
+              <p class="text-[10px] text-gray-500 truncate">${song.artist}</p>
+            </div>
+          </div>
+          ${index === currentSongIndex ? '<i class="fa-solid fa-compact-disc text-deepRose text-xs animate-spin"></i>' : '<i class="fa-solid fa-play text-gray-300 text-xs"></i>'}
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function loadSong(index) {
+      currentSongIndex = index;
+      const song = playlist[index];
+      
+      document.getElementById('song-title').innerText = song.title;
+      document.getElementById('song-artist').innerText = song.artist;
+      document.getElementById('song-tag').innerText = song.tag;
+      
+      audio.src = song.src;
+      audio.volume = volumeSlider.value;
+      initPlaylist();
+    }
+
+    function selectSong(index) {
+      loadSong(index);
+      playAudio();
+    }
+
+    function playAudio() {
+      audio.play().then(() => {
+        isPlaying = true;
+        playIcon.className = 'fa-solid fa-pause';
+        visualizer.classList.remove('paused');
+      }).catch(err => {
+        console.log("Autoplay retido pelo navegador.");
+      });
+    }
+
+    function pauseAudio() {
+      audio.pause();
+      isPlaying = false;
+      playIcon.className = 'fa-solid fa-play ml-1';
+      visualizer.classList.add('paused');
+    }
+
+    function togglePlay() {
+      if (isPlaying) {
+        pauseAudio();
+      } else {
+        playAudio();
+      }
+    }
+
+    function prevSong() {
+      currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+      loadSong(currentSongIndex);
+      if (isPlaying) playAudio();
+    }
+
+    function nextSong() {
+      currentSongIndex = (currentSongIndex + 1) % playlist.length;
+      loadSong(currentSongIndex);
+      if (isPlaying) playAudio();
+    }
+
+    function updateProgress() {
+      if (audio.duration) {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = `${percent}%`;
+
+        document.getElementById('current-time').innerText = formatTime(audio.currentTime);
+        document.getElementById('duration-time').innerText = formatTime(audio.duration);
+      }
+    }
+
+    function setProgress(e) {
+      const container = document.getElementById('progress-container');
+      const width = container.clientWidth;
+      const clickX = e.offsetX;
+      const duration = audio.duration;
+
+      if (duration) {
+        audio.currentTime = (clickX / width) * duration;
+      }
+    }
+
+    function changeVolume(val) {
+      audio.volume = val;
+      if (val == 0) {
+        volumeIcon.className = 'fa-solid fa-volume-xmark text-sm';
+      } else if (val < 0.5) {
+        volumeIcon.className = 'fa-solid fa-volume-low text-sm';
+      } else {
+        volumeIcon.className = 'fa-solid fa-volume-high text-sm';
+      }
+    }
+
+    function toggleMute() {
+      if (audio.volume > 0) {
+        audio.volume = 0;
+        volumeSlider.value = 0;
+        volumeIcon.className = 'fa-solid fa-volume-xmark text-sm';
+      } else {
+        audio.volume = 0.8;
+        volumeSlider.value = 0.8;
+        volumeIcon.className = 'fa-solid fa-volume-high text-sm';
+      }
+    }
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    /* -------------------------------------------------------------
+       4. LOVE LETTER MODAL LOGIC
+    ------------------------------------------------------------- */
+    function openLetter() {
+      document.getElementById('letter-modal').classList.remove('hidden');
+      confetti({
+        particleCount: 60,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function closeLetter() {
+      document.getElementById('letter-modal').classList.add('hidden');
+    }
+
+    /* -------------------------------------------------------------
+       5. DODGING "NÃO" BUTTON LOGIC
+    ------------------------------------------------------------- */
+    function dodgeNoButton() {
+      const btn = document.getElementById('no-btn');
+      const wrapper = document.getElementById('button-wrapper');
+      
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+
+      const maxX = wrapperRect.width - btnRect.width;
+      const maxY = wrapperRect.height - btnRect.height;
+
+      const randomX = Math.floor(Math.random() * maxX) - (maxX / 2);
+      const randomY = Math.floor(Math.random() * maxY) - (maxY / 2);
+
+      btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    function acceptLove() {
+      confetti({
+        particleCount: 200,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
+      alert('SABIA QUE VOCÊ IA ACEITAR, LÍVIA! VOCÊ É O AMOR DA MINHA VIDA! ❤️🥰🌹');
+    }
+
+    /* -------------------------------------------------------------
+       6. SURPRISE CONFETTI EXPLOSION
+    ------------------------------------------------------------- */
+    function triggerExplosion() {
+      const duration = 3 * 1000;
+      const animationEnd = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 8,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#FF4D6D', '#FFB3C1', '#FFD700', '#E2D4F0']
+        });
+        confetti({
+          particleCount: 8,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#FF4D6D', '#FFB3C1', '#FFD700', '#E2D4F0']
+        });
+
+        if (Date.now() < animationEnd) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+
+    /* -------------------------------------------------------------
+       INIT ON LOAD
+    ------------------------------------------------------------- */
+    window.onload = function() {
+      loadSong(0);
+    };
+  </script>
+</body>
+</html>
